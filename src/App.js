@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import alanBtn from '@alan-ai/alan-sdk-web';
+import useStyles from './components/styles'
+import logo from './images/news-hub-logo.png'
+
 
 import NewsCards from './components/NewsCards'
 
@@ -8,6 +11,8 @@ import NewsCards from './components/NewsCards'
 const alanKey = process.env.REACT_APP_API_KEY
 
 function App() {
+
+  const classes = useStyles();
 
   const [newsArticles, setNewsArticles] = useState([])
 
@@ -28,7 +33,10 @@ function App() {
 
   return (
     <div>
-      <h1>NEWS APP</h1>
+      <div className={classes.logoContainer}>
+        <img src={logo} />
+
+      </div>
       <NewsCards articles={newsArticles} />
 
     </div>
