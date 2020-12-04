@@ -1,5 +1,6 @@
 import React from 'react'
 import useStyles from './styles'
+import placeholder from '../images/news-placeholder.png'
 import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core'
 
 
@@ -11,7 +12,7 @@ const NewsCard = ({ article: { description, publishedAt, source, title, url, url
     return (
         <Card clasName={classes.card}>
             <CardActionArea href={url} target='_blank'>
-                <CardMedia className={classes.media} image={urlToImage || 'no image available'} />
+                <CardMedia className={classes.media} image={urlToImage || placeholder} />
                 <div clasName={classes.details}>
                     <Typography variant='body2' color='textSecondary' component='h2'>{(new Date(publishedAt)).toDateString()}</Typography>
                     <Typography variant='body2' color='textSecondary' component='h2'>{source.name}</Typography>

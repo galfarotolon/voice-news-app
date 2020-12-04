@@ -15,6 +15,7 @@ const infoCards = [
 
 const NewsCards = ({ articles }) => {
 
+    //useStyles material UI
     const classes = useStyles();
 
     //if there are no articles

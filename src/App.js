@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import alanBtn from '@alan-ai/alan-sdk-web';
-import useStyles from './components/styles'
+import useStyles from './components/app-styles'
 import logo from './images/news-hub-logo.png'
 
 
