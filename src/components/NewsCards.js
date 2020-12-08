@@ -59,9 +59,6 @@ const NewsCards = ({ articles }) => {
                     </Grid>
                 })}
             </Grid>
-
-
-
         </Grow>
     )
 }

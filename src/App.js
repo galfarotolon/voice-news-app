@@ -6,7 +6,7 @@ import logo from './images/news-hub-logo.png'
 
 import NewsCards from './components/NewsCards'
 
-
+//alan key env
 
 const alanKey = process.env.REACT_APP_API_KEY
 
