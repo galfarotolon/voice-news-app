@@ -14,6 +14,7 @@ function App() {
   const classes = useStyles();
 
   const [newsArticles, setNewsArticles] = useState([])
+  const [activeArticle, setActiveArticle] = useState(-1)
 
 
   useEffect(() => {
@@ -22,6 +23,9 @@ function App() {
       onCommand: ({ command, articles }) => {
         if (command === 'newHeadlines') {
           setNewsArticles(articles)
+          setActiveArticle(-1);
+        } else if (command === 'highlight') {
+          setActiveArticle((prevActiveArticle) => prevActiveArticle + 1)
         }
       }
 
@@ -36,7 +40,7 @@ function App() {
         <img src={logo} />
 
       </div>
-      <NewsCards articles={newsArticles} />
+      <NewsCards articles={newsArticles} activeArticle={activeArticle} />
 
     </div>
   );

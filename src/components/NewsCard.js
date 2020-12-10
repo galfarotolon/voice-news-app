@@ -3,14 +3,15 @@ import useStyles from './styles'
 import placeholder from '../images/news-placeholder.png'
 import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core'
 
+import classNames from 'classnames';
 
 
-const NewsCard = ({ article: { description, publishedAt, source, title, url, urlToImage }, idx }) => {
+const NewsCard = ({ article: { description, publishedAt, source, title, url, urlToImage }, idx, activeArticle }) => {
 
     const classes = useStyles();
 
     return (
-        <Card clasName={classes.card}>
+        <Card className={classNames(classes.card, activeArticle === idx ? classes.activeCard : null)}>
             <CardActionArea href={url} target='_blank'>
                 <CardMedia className={classes.media} image={urlToImage || placeholder} />
                 <div clasName={classes.details}>

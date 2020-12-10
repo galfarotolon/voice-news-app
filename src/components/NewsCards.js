@@ -13,7 +13,7 @@ const infoCards = [
     { color: '#283593', title: 'News by Sources', info: 'CNN, Wired, BBC News, Time, IGN, Buzzfeed, ABC News...', text: 'Give me the news from CNN' },
 ];
 
-const NewsCards = ({ articles }) => {
+const NewsCards = ({ articles, activeArticle }) => {
 
     //useStyles material UI
     const classes = useStyles();
@@ -55,7 +55,7 @@ const NewsCards = ({ articles }) => {
                 {articles.map((article, idx) => {
                     return <Grid key={idx} item xs={12} sm={6} md={4} lg={3} style={{ display: 'flex' }}>
 
-                        <NewsCard idx={idx} article={article} />
+                        <NewsCard idx={idx} article={article} activeArticle={activeArticle} />
                     </Grid>
                 })}
             </Grid>
