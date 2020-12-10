@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import useStyles from './styles'
+
 import placeholder from '../images/news-placeholder.png'
 import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core'
 
@@ -10,11 +11,31 @@ const NewsCard = ({ article: { description, publishedAt, source, title, url, url
 
     const classes = useStyles();
 
+    const [elRefs, setElRefs] = useState([]);
+
+    const scrollToRef = (ref) => {
+        window.scroll(0, ref.current.offsetTop - 50);
+    }
+
+    useEffect(() => {
+        window.scroll(0, 0);
+
+        setElRefs((refs) => Array(20).fill().map((_, j) => refs[j] || createRef()));
+    }, []);
+
+    useEffect(() => {
+
+        if (idx === activeArticle && elRefs[activeArticle]) {
+            scrollToRef(elRefs[activeArticle]);
+        }
+
+    }, [idx, activeArticle, elRefs])
+
     return (
-        <Card className={classNames(classes.card, activeArticle === idx ? classes.activeCard : null)}>
+        <Card ref={elRefs[idx]} className={classNames(classes.card, activeArticle === idx ? classes.activeCard : null)}>
             <CardActionArea href={url} target='_blank'>
                 <CardMedia className={classes.media} image={urlToImage || placeholder} />
-                <div clasName={classes.details}>
+                <div className={classes.details}>
                     <Typography variant='body2' color='textSecondary' component='h2'>{(new Date(publishedAt)).toDateString()}</Typography>
                     <Typography variant='body2' color='textSecondary' component='h2'>{source.name}</Typography>
                 </div>
