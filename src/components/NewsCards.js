@@ -15,10 +15,10 @@ const infoCards = [
 
 const NewsCards = ({ articles, activeArticle }) => {
 
-    //useStyles material UI
+
     const classes = useStyles();
 
-    //if there are no articles
+
     if (!articles.length) {
 
         return (
